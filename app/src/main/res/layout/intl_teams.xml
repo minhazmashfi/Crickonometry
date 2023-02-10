@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:backgroundTint="#D7BDE2"
+    android:elevation="16dp"
+    app:cardBackgroundColor="#9E1818"
+    app:cardCornerRadius="10dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+    <ImageView
+        android:id="@+id/countryImage"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:src="@drawable/ic_launcher_background"
+        >
+
+    </ImageView>
+
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/country"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="country name"
+        android:textColor="#F30303"
+        android:textSize="24sp">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Code">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Update Time"></TextView>
+</LinearLayout>
+
+
+
+  </LinearLayout>
+
+
+
+
+</com.google.android.material.card.MaterialCardView>
