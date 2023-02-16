@@ -10,26 +10,35 @@ import com.minhaz_uddin.crickonometry.dao.CrickDao
 import com.minhaz_uddin.crickonometry.database.CrickDatabase
 import com.minhaz_uddin.crickonometry.model.fixture.FixtureData
 import com.minhaz_uddin.crickonometry.model.fixture.Fixtures
+import com.minhaz_uddin.crickonometry.model.ranking.Ranking
+import com.minhaz_uddin.crickonometry.model.ranking.RankingData
 import com.minhaz_uddin.crickonometry.model.teams.TeamData
 import com.minhaz_uddin.crickonometry.model.teams.Teams
 import com.minhaz_uddin.crickonometry.network.CricketApi
-import com.minhaz_uddin.crickonometry.network.SportsApi
 import com.minhaz_uddin.crickonometry.repository.Repository
 import kotlinx.coroutines.launch
 
 class CrickViewModel(application: Application):AndroidViewModel(application) {
     private var _teamList= MutableLiveData<Teams>()
     private var _fixtureList=MutableLiveData<Fixtures>()
+    private var _upcomingList=MutableLiveData<Fixtures>()
+    private var _rankingList= MutableLiveData<List<RankingData>>()
+    var upcomingList=_upcomingList
     var fixtureList=_fixtureList
     var teamList=_teamList
+    var rankingList=_rankingList
     val readAllTeams:LiveData<List<TeamData>>
+    val readRecentMatches:LiveData<List<FixtureData>>
     private val repository:Repository
     init{
         val crickDao:CrickDao=CrickDatabase.getDataBaseInstance(application).CrickDao()
         repository=Repository(crickDao)
         readAllTeams=repository.readAllTeams()
+        readRecentMatches=repository.readAllRecentMatches("Finished")
         getAllTeams()
         getAllFixtures()
+        getRanking()
+
     }
     fun getAllTeams(){
         viewModelScope.launch {
@@ -53,12 +62,29 @@ class CrickViewModel(application: Application):AndroidViewModel(application) {
     fun getAllFixtures(){
     viewModelScope.launch {
         _fixtureList.value = CricketApi.retrofitService.getAllFixtures()
-
+        _upcomingList.value=CricketApi.retrofitService.getAllUpcomings()
         for (fixture in _fixtureList.value!!.data) {
             addFixture(fixture)
         }
+        for (fixture in _upcomingList.value!!.data){
+            addFixture(fixture)
+        }
     }
+
     }
+    fun getTeamInfo(id:Int):TeamData{
+        val teamdata=repository.getTeamInfo(id)
+        Log.d("teamdata", "getTeamInfo: $teamdata")
+        return repository.getTeamInfo(id)
+
+    }
+    fun getRanking() {
+        viewModelScope.launch {
+            _rankingList.value = CricketApi.retrofitService.getAllRankings().data
+            Log.d("ranking", "getRanking:${rankingList.value} ")
+        }
+    }
+
 
 
 

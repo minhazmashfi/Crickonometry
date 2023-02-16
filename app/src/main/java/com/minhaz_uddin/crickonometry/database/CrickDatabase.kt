@@ -11,7 +11,7 @@ import com.minhaz_uddin.crickonometry.model.fixture.FixtureData
 import com.minhaz_uddin.crickonometry.model.teams.TeamData
 
 
-@Database(entities=[TeamData::class,FixtureData::class], version = 7, exportSchema = false)
+@Database(entities=[TeamData::class,FixtureData::class], version = 8, exportSchema = false)
 @TypeConverters(Converter::class)
 abstract class CrickDatabase:RoomDatabase() {
     abstract fun CrickDao():CrickDao

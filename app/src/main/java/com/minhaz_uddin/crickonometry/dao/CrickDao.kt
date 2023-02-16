@@ -15,7 +15,13 @@ interface CrickDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addFixture(fixtureData: FixtureData)
     @Query("SELECT * FROM teamTable")
-     fun readAllTeams():LiveData<List<TeamData>>
+    fun readAllTeams():LiveData<List<TeamData>>
+    @Query ("SELECT * FROM fixtureTable WHERE status=:status ")
+    fun readAllRecentMatches(status: String):LiveData<List<FixtureData>>
+    @Query("Select * From teamTable WHERE id=:id")
+    fun getTeamInfo(id:Int):TeamData
+    @Query("SELECT * FROM fixtureTable WHERE starting_at>=:date")
+    fun readAllUpcoming(date:String):LiveData<List<FixtureData>>
 
 
 

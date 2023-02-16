@@ -1,8 +1,9 @@
 package com.minhaz_uddin.crickonometry.network
 
 import com.minhaz_uddin.crickonometry.model.Constants
-import com.minhaz_uddin.crickonometry.model.fixture.FixtureData
 import com.minhaz_uddin.crickonometry.model.fixture.Fixtures
+import com.minhaz_uddin.crickonometry.model.ranking.Ranking
+import com.minhaz_uddin.crickonometry.model.ranking.RankingData
 import com.minhaz_uddin.crickonometry.model.teams.Teams
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -17,10 +18,16 @@ private val retrofit=Retrofit.Builder().addConverterFactory(MoshiConverterFactor
 
 
 interface SportsApi {
-    @GET("https://cricket.sportmonks.com/api/v2.0/teams?filter[country_id]=190324&api_token=KNq74r9kcedTzzf4XUIPppyaOkdvH48FcNEo1oeBGGI9wtMWcAQ470SMTgrH&include=")
+    @GET("https://cricket.sportmonks.com/api/v2.0/teams?api_token=KNq74r9kcedTzzf4XUIPppyaOkdvH48FcNEo1oeBGGI9wtMWcAQ470SMTgrH&include=")
     suspend fun getAllTeams():Teams
     @GET("https://cricket.sportmonks.com/api/v2.0/fixtures?api_token=KNq74r9kcedTzzf4XUIPppyaOkdvH48FcNEo1oeBGGI9wtMWcAQ470SMTgrH&include=runs&wickets")
     suspend fun getAllFixtures():Fixtures
+    @GET ( "https://cricket.sportmonks.com/api/v2.0/fixtures?filter[starts_between]=2023-2-15,2023-3-15&api_token=KNq74r9kcedTzzf4XUIPppyaOkdvH48FcNEo1oeBGGI9wtMWcAQ470SMTgrH&include=")
+    suspend fun getAllUpcomings():Fixtures
+    @GET("https://cricket.sportmonks.com/api/v2.0/team-rankings?filter[type]=ODI&api_token=KNq74r9kcedTzzf4XUIPppyaOkdvH48FcNEo1oeBGGI9wtMWcAQ470SMTgrH&include=")
+    suspend fun getAllRankings():Ranking
+
+
 }
 object CricketApi{
     val retrofitService:SportsApi by lazy{ retrofit.create(SportsApi::class.java) }

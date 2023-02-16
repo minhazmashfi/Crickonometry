@@ -18,6 +18,7 @@ data class FixtureData(
     var last_period: Any?,
     var league_id: Int?,
     var live: Boolean?,
+    @Ignore
     var localteam_dl_data: LocalteamDlData?,
     var localteam_id: Int?,
     var man_of_match_id: Int?,

@@ -5,18 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    android:backgroundTint="#D7BDE2"
+    android:backgroundTint="#73C6B6"
     android:elevation="16dp"
     app:cardBackgroundColor="#9E1818"
-    app:cardCornerRadius="10dp">
+    app:cardCornerRadius="10dp"
+    >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal">
     <ImageView
         android:id="@+id/countryImage"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:src="@drawable/ic_launcher_background"
         >
 
@@ -31,10 +32,10 @@
         android:id="@+id/country"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
+        android:layout_marginLeft="20dp"
         android:fontFamily="sans-serif-medium"
         android:text="country name"
-        android:textColor="#F30303"
+        android:textColor="#AC0D0D"
         android:textSize="24sp">
 
     </TextView>
@@ -43,24 +44,53 @@
         android:id="@+id/code"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
+        android:layout_marginLeft="20dp"
         android:fontFamily="sans-serif-black"
-        android:text="Code">
+        android:text="Code"
+        android:textColor="#004D40">
 
     </TextView>
 
     <TextView
-        android:id="@+id/update"
+        android:id="@+id/rating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="Update Time"></TextView>
+        android:layout_marginLeft="20dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="Rating"
+        android:textColor="#F57F17"
+        android:textSize="18sp"></TextView>
+
+    <TextView
+        android:id="@+id/position"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:fontFamily="sans-serif-black"
+        android:text="position"
+        android:textColor="#1A237E"
+        android:textSize="22sp">
+
+    </TextView>
+
 </LinearLayout>
 
 
 
   </LinearLayout>
+
+        <TextView
+            android:id="@+id/points"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="220dp"
+            android:layout_marginTop="50dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Points"
+            android:textColor="#FF0000"
+            android:textSize="18dp">
+  </TextView>
+
 
 
 
