@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:backgroundTint="#FDF2E9"
+    android:elevation="20dp"
+    app:cardBackgroundColor="#FDF2E9"
+    app:cardCornerRadius="10dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+     <ImageView
+         android:id="@+id/local"
+         android:layout_width="80dp"
+         android:layout_height="80dp"
+         android:src="@drawable/ic_launcher_background">
+
+     </ImageView>
+
+        <TextView
+            android:id="@+id/team1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="sans-serif-black"
+            android:layout_marginLeft="10dp"
+            android:text="TEAM"
+            android:textSize="18dp">
+
+        </TextView>
+    </LinearLayout>
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="90dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="VS"
+            android:textSize="30dp"></TextView>
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:fontFamily="sans-serif-black"
+        android:layout_marginTop="10dp"
+        android:text="result:::"
+        android:textColor="#B71C1C"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:text="Date:::"
+        android:textColor="#004D40" />
+</LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:orientation="vertical">
+    <ImageView
+        android:id="@+id/visitor"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/ic_launcher_background"
+        android:layout_marginLeft="33dp">
+
+    </ImageView>
+
+            <TextView
+                android:id="@+id/team2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:fontFamily="sans-serif-black"
+                android:text="TEAM"
+                android:textSize="18dp" />
+        </LinearLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>
