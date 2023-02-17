@@ -1,5 +1,7 @@
 package com.minhaz_uddin.crickonometry.network
 
+import com.minhaz_uddin.crickonometry.fixtureDetails.FixtureDl
+import com.minhaz_uddin.crickonometry.fixtureDetails.fixtureDetails
 import com.minhaz_uddin.crickonometry.model.Constants
 import com.minhaz_uddin.crickonometry.model.fixture.Fixtures
 import com.minhaz_uddin.crickonometry.model.ranking.Ranking
@@ -26,7 +28,8 @@ interface SportsApi {
     suspend fun getAllUpcomings():Fixtures
     @GET("https://cricket.sportmonks.com/api/v2.0/team-rankings?filter[type]=ODI&api_token=KNq74r9kcedTzzf4XUIPppyaOkdvH48FcNEo1oeBGGI9wtMWcAQ470SMTgrH&include=")
     suspend fun getAllRankings():Ranking
-
+    @GET("https://cricket.sportmonks.com/api/v2.0/fixtures?filter[starts_between]=2023-02-1,2023-02-15&include=visitorteam,localteam,lineup&api_token=KNq74r9kcedTzzf4XUIPppyaOkdvH48FcNEo1oeBGGI9wtMWcAQ470SMTgrH")
+    suspend fun getFixtureDl():fixtureDetails
 
 }
 object CricketApi{

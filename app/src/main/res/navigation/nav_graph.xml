@@ -39,4 +39,9 @@
         android:name="com.minhaz_uddin.crickonometry.fragments.MatchFragment"
         android:label="fragment_match"
         tools:layout="@layout/fragment_match" />
+    <fragment
+        android:id="@+id/playersFragment"
+        android:name="com.minhaz_uddin.crickonometry.fragments.PlayersFragment"
+        android:label="fragment_players"
+        tools:layout="@layout/fragment_players" />
 </navigation>

@@ -30,9 +30,13 @@ class HomeScreenFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val button=view.findViewById<Button>(R.id.ranking)
+        val players=view.findViewById<Button>(R.id.players)
         button.setOnClickListener {
             val action=HomeFragmentDirections.actionHomeFragmentToRankingFragment()
             view.findNavController().navigate(action)
+        }
+        players.setOnClickListener {
+          findNavController().navigate(R.id.playersFragment)
         }
     }
 

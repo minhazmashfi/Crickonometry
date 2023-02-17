@@ -8,6 +8,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.minhaz_uddin.crickonometry.dao.CrickDao
 import com.minhaz_uddin.crickonometry.database.CrickDatabase
+import com.minhaz_uddin.crickonometry.fixtureDetails.FixtureDl
+import com.minhaz_uddin.crickonometry.fixtureDetails.fixtureDetails
 import com.minhaz_uddin.crickonometry.model.fixture.FixtureData
 import com.minhaz_uddin.crickonometry.model.fixture.Fixtures
 import com.minhaz_uddin.crickonometry.model.ranking.Ranking
@@ -23,6 +25,8 @@ class CrickViewModel(application: Application):AndroidViewModel(application) {
     private var _fixtureList=MutableLiveData<Fixtures>()
     private var _upcomingList=MutableLiveData<Fixtures>()
     private var _rankingList= MutableLiveData<List<RankingData>>()
+    private var _fixtureDlList=MutableLiveData<fixtureDetails>()
+    var fixtureDlList=_fixtureDlList
     var upcomingList=_upcomingList
     var fixtureList=_fixtureList
     var teamList=_teamList
@@ -38,7 +42,7 @@ class CrickViewModel(application: Application):AndroidViewModel(application) {
         getAllTeams()
         getAllFixtures()
         getRanking()
-
+        getFixtureDetails()
     }
     fun getAllTeams(){
         viewModelScope.launch {
@@ -82,6 +86,12 @@ class CrickViewModel(application: Application):AndroidViewModel(application) {
         viewModelScope.launch {
             _rankingList.value = CricketApi.retrofitService.getAllRankings().data
             Log.d("ranking", "getRanking:${rankingList.value} ")
+        }
+    }
+    fun getFixtureDetails(){
+        viewModelScope.launch{
+            _fixtureDlList.value=CricketApi.retrofitService.getFixtureDl()
+            Log.d("fixdl", "${_fixtureDlList.value}")
         }
     }
 
