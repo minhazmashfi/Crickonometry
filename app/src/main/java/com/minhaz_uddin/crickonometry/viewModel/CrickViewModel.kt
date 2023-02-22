@@ -9,9 +9,11 @@ import androidx.lifecycle.viewModelScope
 import com.minhaz_uddin.crickonometry.dao.CrickDao
 import com.minhaz_uddin.crickonometry.database.CrickDatabase
 import com.minhaz_uddin.crickonometry.fixtureDetails.FixtureDl
+import com.minhaz_uddin.crickonometry.fixtureDetails.Lineup
 import com.minhaz_uddin.crickonometry.fixtureDetails.fixtureDetails
 import com.minhaz_uddin.crickonometry.model.fixture.FixtureData
 import com.minhaz_uddin.crickonometry.model.fixture.Fixtures
+import com.minhaz_uddin.crickonometry.model.fixture.Run
 import com.minhaz_uddin.crickonometry.model.ranking.Ranking
 import com.minhaz_uddin.crickonometry.model.ranking.RankingData
 import com.minhaz_uddin.crickonometry.model.teams.TeamData
@@ -33,6 +35,7 @@ class CrickViewModel(application: Application):AndroidViewModel(application) {
     var rankingList=_rankingList
     val readAllTeams:LiveData<List<TeamData>>
     val readRecentMatches:LiveData<List<FixtureData>>
+    val readAllPlayers:LiveData<List<Lineup>>
     private val repository:Repository
     init{
         val crickDao:CrickDao=CrickDatabase.getDataBaseInstance(application).CrickDao()
@@ -43,6 +46,7 @@ class CrickViewModel(application: Application):AndroidViewModel(application) {
         getAllFixtures()
         getRanking()
         getFixtureDetails()
+        readAllPlayers=repository.readAllPlayers()
     }
     fun getAllTeams(){
         viewModelScope.launch {
@@ -68,6 +72,7 @@ class CrickViewModel(application: Application):AndroidViewModel(application) {
         _fixtureList.value = CricketApi.retrofitService.getAllFixtures()
         _upcomingList.value=CricketApi.retrofitService.getAllUpcomings()
         for (fixture in _fixtureList.value!!.data) {
+
             addFixture(fixture)
         }
         for (fixture in _upcomingList.value!!.data){
@@ -91,7 +96,14 @@ class CrickViewModel(application: Application):AndroidViewModel(application) {
     fun getFixtureDetails(){
         viewModelScope.launch{
             _fixtureDlList.value=CricketApi.retrofitService.getFixtureDl()
-            Log.d("fixdl", "${_fixtureDlList.value}")
+            for (data in _fixtureDlList.value!!.data){
+                val match=data
+                for (linup in match.lineup){
+                 repository.addPlayer(linup)
+                }
+            }
+
+
         }
     }
 

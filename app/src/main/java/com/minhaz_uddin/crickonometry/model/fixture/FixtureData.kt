@@ -5,6 +5,7 @@ import androidx.room.Ignore
 import androidx.room.PrimaryKey
 
 
+
 @Entity (tableName="fixtureTable")
 
 data class FixtureData(
@@ -33,6 +34,8 @@ data class FixtureData(
     var second_umpire_id: Int?,
     var stage_id: Int?,
     var starting_at: String?,
+    @Ignore
+    var runs:List<Run>?,
     var status: String?,
     var super_over: Boolean?,
     var toss_won_team_id: Int?,
@@ -48,5 +51,5 @@ data class FixtureData(
     var winner_team_id: Int?
 ){
     constructor():this("null","null",0,false,0,"null",0,false,null,0,0,0,"null",0,"null","null","null","null",0,0,
-    0,"null","null",false,0,0,0,"null",0,null,0,null,0)
+    0,"null",null,"null",false,0,0,0,"null",0,null,0,null,0)
 }

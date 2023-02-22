@@ -22,13 +22,13 @@ private val retrofit=Retrofit.Builder().addConverterFactory(MoshiConverterFactor
 interface SportsApi {
     @GET("https://cricket.sportmonks.com/api/v2.0/teams?api_token=KNq74r9kcedTzzf4XUIPppyaOkdvH48FcNEo1oeBGGI9wtMWcAQ470SMTgrH&include=")
     suspend fun getAllTeams():Teams
-    @GET("https://cricket.sportmonks.com/api/v2.0/fixtures?api_token=KNq74r9kcedTzzf4XUIPppyaOkdvH48FcNEo1oeBGGI9wtMWcAQ470SMTgrH&include=runs&wickets")
+    @GET("https://cricket.sportmonks.com/api/v2.0/fixtures?filter[starts_between]=2023-1-15,2023-2-15&api_token=KNq74r9kcedTzzf4XUIPppyaOkdvH48FcNEo1oeBGGI9wtMWcAQ470SMTgrH&include=runs")
     suspend fun getAllFixtures():Fixtures
-    @GET ( "https://cricket.sportmonks.com/api/v2.0/fixtures?filter[starts_between]=2023-2-15,2023-3-15&api_token=KNq74r9kcedTzzf4XUIPppyaOkdvH48FcNEo1oeBGGI9wtMWcAQ470SMTgrH&include=")
+    @GET ( "https://cricket.sportmonks.com/api/v2.0/fixtures?filter[starts_between]=2023-2-28,2023-4-28&api_token=KNq74r9kcedTzzf4XUIPppyaOkdvH48FcNEo1oeBGGI9wtMWcAQ470SMTgrH&include=")
     suspend fun getAllUpcomings():Fixtures
     @GET("https://cricket.sportmonks.com/api/v2.0/team-rankings?filter[type]=ODI&api_token=KNq74r9kcedTzzf4XUIPppyaOkdvH48FcNEo1oeBGGI9wtMWcAQ470SMTgrH&include=")
     suspend fun getAllRankings():Ranking
-    @GET("https://cricket.sportmonks.com/api/v2.0/fixtures?filter[starts_between]=2023-02-1,2023-02-15&include=visitorteam,localteam,lineup&api_token=KNq74r9kcedTzzf4XUIPppyaOkdvH48FcNEo1oeBGGI9wtMWcAQ470SMTgrH")
+    @GET("https://cricket.sportmonks.com/api/v2.0/fixtures?filter[starts_between]=2023-01-15,2023-03-15&include=visitorteam,localteam,lineup&api_token=KNq74r9kcedTzzf4XUIPppyaOkdvH48FcNEo1oeBGGI9wtMWcAQ470SMTgrH")
     suspend fun getFixtureDl():fixtureDetails
 
 }

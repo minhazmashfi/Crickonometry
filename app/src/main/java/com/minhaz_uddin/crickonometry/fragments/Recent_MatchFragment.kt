@@ -33,8 +33,8 @@ class Recent_MatchFragment : Fragment() {
         viewModel=ViewModelProvider(this)[CrickViewModel::class.java]
         recyclerView=view.findViewById(R.id.recycler)
         recyclerView.layoutManager=LinearLayoutManager(requireContext())
-        viewModel.readRecentMatches.observe(viewLifecycleOwner){
-                recyclerView.adapter=FixtureAdapter(requireContext(),it,viewModel)
+        viewModel.fixtureList.observe(viewLifecycleOwner){
+                recyclerView.adapter=FixtureAdapter(requireContext(),it.data,viewModel)
         }
 
     }

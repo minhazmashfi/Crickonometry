@@ -1,6 +1,7 @@
 package com.minhaz_uddin.crickonometry.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,6 +27,11 @@ class FixtureAdapter (private val context: Context,private val fixtures:List<Fix
             val team2=view.findViewById<TextView>(R.id.team2)
             val result=view.findViewById<TextView>(R.id.result)
             val date=view.findViewById<TextView>(R.id.date)
+            val time=view.findViewById<TextView>(R.id.time)
+            val run1=view.findViewById<TextView>(R.id.run1)
+            val run2=view.findViewById<TextView>(R.id.run2)
+            val over1=view.findViewById<TextView>(R.id.overs1)
+            val overs2=view.findViewById<TextView>(R.id.overs2)
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FixtureViewHolder {
@@ -39,6 +45,9 @@ class FixtureAdapter (private val context: Context,private val fixtures:List<Fix
             GlobalScope.launch(Dispatchers.Default) {
                 val team1 = viewModel.getTeamInfo(item.localteam_id!!)
                 val team2 = viewModel.getTeamInfo(item.visitorteam_id!!)
+                val runteam1=item.runs?.get(0)?.team_id
+                val runteam2=item.runs?.get(1)?.team_id
+
                 GlobalScope.launch(Dispatchers.Main) {
                     Glide.with(context).load(team1.image_path)
                         .centerCrop()
@@ -51,7 +60,21 @@ class FixtureAdapter (private val context: Context,private val fixtures:List<Fix
                         .centerCrop()
                         .into(holder.visitorTeam)
                     holder.team2.text=team2.code
-                    holder.date.text=item.starting_at
+                    if (runteam1==team1.id){
+                        holder.run1.text="${item.runs?.get(0)?.score.toString()}/${item.runs?.get(0)?.wickets.toString()}"
+                        holder.run2.text="${item.runs?.get(1)?.score.toString()}/${item.runs?.get(1)?.wickets.toString()}"
+                        holder.over1.text="${item.runs?.get(0)?.overs.toString()}"
+                        holder.overs2.text="${item.runs?.get(1)?.overs.toString()}"
+                    }
+                    else{
+                        holder.run1.text="${item.runs?.get(1)?.score.toString()}/${item.runs?.get(1)?.wickets.toString()}"
+                        holder.run2.text="${item.runs?.get(0)?.score.toString()}/${item.runs?.get(0)?.wickets.toString()}"
+                        holder.over1.text="${item.runs?.get(1)?.overs.toString()}"
+                        holder.overs2.text="${item.runs?.get(0)?.overs.toString()}"
+                    }
+
+                    holder.date.text="Date: ${item.starting_at!!.split("T")[0]}"
+                    holder.time.text="Time: ${item.starting_at!!.split("T")[1].split(".")[0]}"
                     holder.itemView.setOnClickListener {
                         holder.itemView.findNavController().navigate(R.id.matchFragment)
                     }

@@ -49,18 +49,6 @@
         android:textColor="#FFFFFF"
         android:textSize="24sp"></TextView>
 
-    <TextView
-        android:id="@+id/d_o_b"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="Date of Birth"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp">
-
-    </TextView>
 </LinearLayout>
         </LinearLayout>
 

@@ -5,14 +5,13 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.minhaz_uddin.crickonometry.Converter
 import com.minhaz_uddin.crickonometry.dao.CrickDao
+import com.minhaz_uddin.crickonometry.fixtureDetails.Lineup
 import com.minhaz_uddin.crickonometry.model.fixture.FixtureData
 import com.minhaz_uddin.crickonometry.model.teams.TeamData
 
 
-@Database(entities=[TeamData::class,FixtureData::class], version = 8, exportSchema = false)
-@TypeConverters(Converter::class)
+@Database(entities=[TeamData::class,FixtureData::class,Lineup::class], version = 11, exportSchema = false)
 abstract class CrickDatabase:RoomDatabase() {
     abstract fun CrickDao():CrickDao
     companion object{

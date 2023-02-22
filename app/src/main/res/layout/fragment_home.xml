@@ -13,7 +13,9 @@
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:backgroundTint="#00FA9A"
+        android:backgroundTint="#8FBC8B"
+        app:tabTextColor="@color/white"
+        app:tabSelectedTextColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -22,7 +24,8 @@
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Home" />
+            android:text="Home"
+            />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
