@@ -11,6 +11,7 @@ import com.minhaz_uddin.crickonometry.database.CrickDatabase
 import com.minhaz_uddin.crickonometry.fixtureDetails.FixtureDl
 import com.minhaz_uddin.crickonometry.fixtureDetails.Lineup
 import com.minhaz_uddin.crickonometry.fixtureDetails.fixtureDetails
+import com.minhaz_uddin.crickonometry.model.info.FixtureInformation
 import com.minhaz_uddin.crickonometry.model.fixture.FixtureData
 import com.minhaz_uddin.crickonometry.model.fixture.Fixtures
 import com.minhaz_uddin.crickonometry.model.fixture.Run
@@ -24,8 +25,8 @@ import kotlinx.coroutines.launch
 
 class CrickViewModel(application: Application):AndroidViewModel(application) {
     private var _teamList= MutableLiveData<Teams>()
-    private var _fixtureList=MutableLiveData<Fixtures>()
-    private var _upcomingList=MutableLiveData<Fixtures>()
+    private var _fixtureList=MutableLiveData<FixtureInformation>()
+    private var _upcomingList=MutableLiveData<FixtureInformation>()
     private var _rankingList= MutableLiveData<List<RankingData>>()
     private var _fixtureDlList=MutableLiveData<fixtureDetails>()
     var fixtureDlList=_fixtureDlList
@@ -71,13 +72,7 @@ class CrickViewModel(application: Application):AndroidViewModel(application) {
     viewModelScope.launch {
         _fixtureList.value = CricketApi.retrofitService.getAllFixtures()
         _upcomingList.value=CricketApi.retrofitService.getAllUpcomings()
-        for (fixture in _fixtureList.value!!.data) {
 
-            addFixture(fixture)
-        }
-        for (fixture in _upcomingList.value!!.data){
-            addFixture(fixture)
-        }
     }
 
     }

@@ -34,9 +34,9 @@ class UpcomingMatchFragment : Fragment() {
         viewModel=ViewModelProvider(this)[CrickViewModel::class.java]
         recyclerView=view.findViewById(R.id.recycler2)
         recyclerView.layoutManager=LinearLayoutManager(requireContext())
-        viewModel.upcomingList.observe(viewLifecycleOwner){
-            recyclerView.adapter=FixtureAdapter(requireContext(),it.data,viewModel)
-        }
+//       viewModel.upcomingList.observe(viewLifecycleOwner){
+//        recyclerView.adapter=FixtureAdapter(requireContext(),it.data,viewModel)
+//     }
 
     }
 

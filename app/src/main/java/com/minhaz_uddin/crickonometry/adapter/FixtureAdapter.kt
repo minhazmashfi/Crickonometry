@@ -7,18 +7,22 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.minhaz_uddin.crickonometry.R
-import com.minhaz_uddin.crickonometry.model.fixture.FixtureData
+import com.minhaz_uddin.crickonometry.fragments.HomeFragmentDirections
+
+import com.minhaz_uddin.crickonometry.model.info.FixtureInfoData
+
 import com.minhaz_uddin.crickonometry.viewModel.CrickViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 
-class FixtureAdapter (private val context: Context,private val fixtures:List<FixtureData>,private val viewModel: CrickViewModel)
+class FixtureAdapter (private val context: Context, private val fixtures:List<FixtureInfoData>, private val viewModel: CrickViewModel)
     :RecyclerView.Adapter<FixtureAdapter.FixtureViewHolder>() {
         class FixtureViewHolder(private val view:View):RecyclerView.ViewHolder(view){
             val localTeam=view.findViewById<ImageView>(R.id.local)
@@ -41,7 +45,8 @@ class FixtureAdapter (private val context: Context,private val fixtures:List<Fix
 
     override fun onBindViewHolder(holder: FixtureViewHolder, position: Int) {
         val item = fixtures[position]
-        if (item.localteam_id != null && item.visitorteam_id != null) {
+        Log.d("problem", "${item.runs}")
+        if (item.localteam_id != null && item.visitorteam_id != null ) {
             GlobalScope.launch(Dispatchers.Default) {
                 val team1 = viewModel.getTeamInfo(item.localteam_id!!)
                 val team2 = viewModel.getTeamInfo(item.visitorteam_id!!)
@@ -60,23 +65,35 @@ class FixtureAdapter (private val context: Context,private val fixtures:List<Fix
                         .centerCrop()
                         .into(holder.visitorTeam)
                     holder.team2.text=team2.code
-                    if (runteam1==team1.id){
-                        holder.run1.text="${item.runs?.get(0)?.score.toString()}/${item.runs?.get(0)?.wickets.toString()}"
-                        holder.run2.text="${item.runs?.get(1)?.score.toString()}/${item.runs?.get(1)?.wickets.toString()}"
-                        holder.over1.text="${item.runs?.get(0)?.overs.toString()}"
-                        holder.overs2.text="${item.runs?.get(1)?.overs.toString()}"
-                    }
-                    else{
-                        holder.run1.text="${item.runs?.get(1)?.score.toString()}/${item.runs?.get(1)?.wickets.toString()}"
-                        holder.run2.text="${item.runs?.get(0)?.score.toString()}/${item.runs?.get(0)?.wickets.toString()}"
-                        holder.over1.text="${item.runs?.get(1)?.overs.toString()}"
-                        holder.overs2.text="${item.runs?.get(0)?.overs.toString()}"
+                    if (item.runs?.get(0)?.score==null){
+                        holder.run1.text=null
+                        holder.run2.text=null
+                        holder.over1.text=null
+                        holder.overs2.text=null
+                    }else {
+                        if (runteam1 == team1.id) {
+                            holder.run1.text =
+                                "${item.runs?.get(0)?.score.toString()}/${item.runs?.get(0)?.wickets.toString()}"
+                            holder.run2.text =
+                                "${item.runs?.get(1)?.score.toString()}/${item.runs?.get(1)?.wickets.toString()}"
+                            holder.over1.text = "${item.runs?.get(0)?.overs.toString()}"
+                            holder.overs2.text = "${item.runs?.get(1)?.overs.toString()}"
+                        } else {
+                            holder.run1.text =
+                                "${item.runs?.get(1)?.score.toString()}/${item.runs?.get(1)?.wickets.toString()}"
+                            holder.run2.text =
+                                "${item.runs?.get(0)?.score.toString()}/${item.runs?.get(0)?.wickets.toString()}"
+                            holder.over1.text = "${item.runs?.get(1)?.overs.toString()}"
+                            holder.overs2.text = "${item.runs?.get(0)?.overs.toString()}"
+                        }
                     }
 
                     holder.date.text="Date: ${item.starting_at!!.split("T")[0]}"
                     holder.time.text="Time: ${item.starting_at!!.split("T")[1].split(".")[0]}"
                     holder.itemView.setOnClickListener {
-                        holder.itemView.findNavController().navigate(R.id.matchFragment)
+                        val action=HomeFragmentDirections.actionHomeFragmentToMatchFragment(item.stage?.name.toString(),item.venue?.name.toString(),item.manofmatch?.fullname.toString(),item.tosswon?.name.toString(),item.venue?.city.toString(),item.league?.name,item.league?.image_path,item.batting?.toTypedArray(),item.lineup?.toTypedArray())
+                        Log.d("previnfo", "${item.stage?.name},${item.id}")
+                        findNavController(holder.itemView).navigate(action)
                     }
 
                 }

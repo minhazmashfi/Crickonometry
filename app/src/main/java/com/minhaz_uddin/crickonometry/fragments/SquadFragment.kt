@@ -6,9 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.minhaz_uddin.crickonometry.R
+import com.minhaz_uddin.crickonometry.model.info.Lineup
 
 
-class SquadFragment : Fragment() {
+class SquadFragment(val lineup:List<Lineup>) : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

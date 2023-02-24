@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_homeFragment_to_rankingFragment"
             app:destination="@id/rankingFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_matchFragment"
+            app:destination="@id/matchFragment" />
     </fragment>
     <fragment
         android:id="@+id/upcomingMatchFragment"
@@ -38,10 +41,66 @@
         android:id="@+id/matchFragment"
         android:name="com.minhaz_uddin.crickonometry.fragments.MatchFragment"
         android:label="fragment_match"
-        tools:layout="@layout/fragment_match" />
+        tools:layout="@layout/fragment_match" >
+        <argument
+            android:name="stage_name"
+            app:argType="string"
+            app:nullable="true" />
+        <argument android:name="venue_name"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="mom"
+            app:argType="string"
+            app:nullable="true" />
+        <argument android:name="tosswon"
+            app:argType="string"
+            app:nullable="true" />
+        <argument android:name="venue_city"
+            app:argType="string"
+            app:nullable="true" />
+        <argument android:name="league_name"
+            app:argType="string"
+            app:nullable="true" />
+        <argument android:name="league_image"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_matchFragment_to_infoFragment"
+            app:destination="@id/infoFragment" />
+        <argument
+            android:name="batting"
+            app:argType="com.minhaz_uddin.crickonometry.model.info.Batting[]"
+            app:nullable="true" />
+        <argument
+            android:name="lineup"
+            app:argType="com.minhaz_uddin.crickonometry.model.info.Lineup[]"
+            app:nullable="true" />
+    </fragment>
     <fragment
         android:id="@+id/playersFragment"
         android:name="com.minhaz_uddin.crickonometry.fragments.PlayersFragment"
         android:label="fragment_players"
         tools:layout="@layout/fragment_players" />
+    <fragment
+        android:id="@+id/infoFragment"
+        android:name="com.minhaz_uddin.crickonometry.fragments.InfoFragment"
+        android:label="fragment_info"
+        tools:layout="@layout/fragment_info" >
+        <argument
+            android:name="stage_name"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue='""' />
+    </fragment>
+    <fragment
+        android:id="@+id/scoreCardFragment"
+        android:name="com.minhaz_uddin.crickonometry.fragments.ScoreCardFragment"
+        android:label="fragment_score_card"
+        tools:layout="@layout/fragment_score_card" />
+    <fragment
+        android:id="@+id/squadFragment"
+        android:name="com.minhaz_uddin.crickonometry.fragments.SquadFragment"
+        android:label="fragment_squad"
+        tools:layout="@layout/fragment_squad" />
 </navigation>
