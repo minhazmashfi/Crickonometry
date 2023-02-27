@@ -13,6 +13,7 @@ import com.minhaz_uddin.crickonometry.R
 import com.minhaz_uddin.crickonometry.adapter.MatchViewPager
 import com.minhaz_uddin.crickonometry.model.info.Batting
 import com.minhaz_uddin.crickonometry.model.info.Lineup
+import kotlin.properties.Delegates
 
 
 class MatchFragment : Fragment() {
@@ -25,6 +26,10 @@ class MatchFragment : Fragment() {
     lateinit var league_image:String
     lateinit var batting_score:List<Batting>
     lateinit var lineup:List<Lineup>
+    var localTeam_id by Delegates.notNull<Int>()
+    var visitorTeam_id by Delegates.notNull<Int>()
+    lateinit var team1:String
+    lateinit var team2:String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -37,6 +42,11 @@ class MatchFragment : Fragment() {
             venue_city=it.getString("venue_city","N/A")
             batting_score=it.getParcelableArray("batting")!!.toList() as List<Batting>
             lineup=it.getParcelableArray("lineup")!!.toList() as List<Lineup>
+            localTeam_id=it.getInt("localTeam_id")
+            visitorTeam_id=it.getInt("visitorTeam_id")
+            team1=it.getString("localTeam_name")!!
+            team2=it.getString("visitorTeam_name")!!
+
         }
 
     }
@@ -54,7 +64,7 @@ class MatchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val TabLayout=view.findViewById<TabLayout>(R.id.tab_Layout)
         val viewPager2=view.findViewById<ViewPager2>(R.id.viewPager2)
-        viewPager2.adapter=MatchViewPager(childFragmentManager,lifecycle,stage_name,venue_name,venue_city,momName,leagueName,league_image,tosswon,batting_score,lineup)
+        viewPager2.adapter=MatchViewPager(childFragmentManager,lifecycle,stage_name,venue_name,venue_city,momName,leagueName,league_image,tosswon,batting_score,lineup,localTeam_id,visitorTeam_id,team1,team2)
         TabLayoutMediator(TabLayout,viewPager2){ tab,position ->
             when(position){
                 0 -> tab.text="Info"

@@ -5,77 +5,157 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     tools:context=".fragments.HomeScreenFragment">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/rankingCard"
-        android:layout_width="410dp"
-        android:layout_height="250dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/livecard"
+        android:layout_width="436dp"
+        android:layout_height="179dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#EAEDED"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:backgroundTint="#FAD7A0"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:src="@drawable/live_match">
+
+            </ImageView>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:text="New Zeland"
+                    android:textColor="#FF6F00"
+                    android:textSize="20sp">
+
+                </TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:text="289/7  (20.0)"
+                    android:textColor="#B80B0B"
+                    android:textSize="16sp">
+
+                </TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:text="India"
+                    android:textColor="#FF6F00"
+                    android:textSize="20sp"></TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:text="244/5  (16.3)"
+                    android:textColor="#B80B0B"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/rankingCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/livecard"
+
+        android:backgroundTint="#16A085"
         app:layout_constraintVertical_bias="0.058">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="horizontal">
         <ImageView
-            android:layout_width="match_parent"
+            android:layout_width="250dp"
             android:layout_height="200dp"
-            android:src="@drawable/ranking">
-
+            android:src="@drawable/rankings">
 
         </ImageView>
-        <Button
-            android:id="@+id/ranking"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="130dp"
-            android:text="Ranking"
 
-        ></Button>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="60dp"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:text="Watch ICC ODI Ranking 2022 of Mens Cricket "
+                android:textColor="@color/white"
+                android:textSize="18dp">
+
+            </TextView>
 
         </LinearLayout>
 "
-
     </androidx.cardview.widget.CardView>
+
     <androidx.cardview.widget.CardView
-        android:layout_width="410dp"
-        android:layout_height="260dp"
+        android:id="@+id/players_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/rankingCard"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:backgroundTint="#FAD7A0"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="#E67E22"
         app:layout_constraintVertical_bias="0.058">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:src="@drawable/ranking">
+                android:layout_width="254dp"
+                android:layout_height="203dp"
+                android:src="@drawable/players">
 
 
             </ImageView>
 
-            <Button
-                android:id="@+id/players"
-                android:layout_width="150dp"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="130dp"
-                android:text="Player Details"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="50dp"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:text="Want to to know more details about your favourite players?"
+                android:textColor="@color/white"
 
-                ></Button>
+                android:textSize="18dp"></TextView>
 
         </LinearLayout>
-        "
+
 
     </androidx.cardview.widget.CardView>
 

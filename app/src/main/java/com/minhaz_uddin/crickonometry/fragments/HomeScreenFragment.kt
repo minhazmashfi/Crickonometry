@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.cardview.widget.CardView
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -29,13 +30,13 @@ class HomeScreenFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val button=view.findViewById<Button>(R.id.ranking)
-        val players=view.findViewById<Button>(R.id.players)
-        button.setOnClickListener {
+        val rankingCard=view.findViewById<CardView>(R.id.rankingCard)
+        val playersCard=view.findViewById<CardView>(R.id.players_card)
+        rankingCard.setOnClickListener {
             val action=HomeFragmentDirections.actionHomeFragmentToRankingFragment()
             view.findNavController().navigate(action)
         }
-        players.setOnClickListener {
+        playersCard.setOnClickListener {
           findNavController().navigate(R.id.playersFragment)
         }
     }

@@ -17,7 +17,7 @@
         android:backgroundTint="#F5F5DC"
         android:elevation="20dp"
         app:cardBackgroundColor="#FFF8DC"
-        app:cardCornerRadius="30dp"
+        app:cardCornerRadius="28dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -71,7 +71,7 @@
                     android:id="@+id/local"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:src="@drawable/ic_launcher_background">
+                   >
 
                 </ImageView>
 
@@ -81,8 +81,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginBottom="10dp"
-                    android:fontFamily="sans-serif-black"
+                    android:fontFamily="sans-serif-condensed-medium"
                     android:text="TEAM"
+                    android:textColor="#4A148C"
                     android:textSize="18dp">
 
                 </TextView>
@@ -91,8 +92,8 @@
                     android:id="@+id/run1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-black"
                     android:layout_marginLeft="10dp"
+                    android:fontFamily="sans-serif-condensed-medium"
                     android:text="run"
                     android:textColor="#1B5E20"
                     android:textSize="20sp">
@@ -116,27 +117,13 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="105dp"
-                    android:layout_marginTop="20dp"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="VS"
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="30dp"
+                    android:src="@drawable/versus">
 
-                    android:textColor="#E45050"
-                    android:textSize="30dp"></TextView>
-
-                <TextView
-                    android:id="@+id/result"
-                    android:layout_width="140dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="60dp"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="sans-serif-black"
-                    android:text="result:::"
-                    android:textColor="#B71C1C"
-                    android:textSize="15dp" />
+                </ImageView>
 
 
             </LinearLayout>
@@ -152,8 +139,8 @@
                     android:id="@+id/visitor"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:layout_marginLeft="33dp"
-                    android:src="@drawable/ic_launcher_background">
+                    android:layout_marginLeft="47dp"
+                    >
 
                 </ImageView>
 
@@ -161,18 +148,19 @@
                     android:id="@+id/team2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="50dp"
-                    android:fontFamily="sans-serif-black"
+                    android:layout_marginLeft="47dp"
+                    android:fontFamily="sans-serif-condensed-medium"
                     android:text="TEAM"
+                    android:textColor="#4A148C"
                     android:textSize="18dp" />
 
                 <TextView
                     android:id="@+id/run2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-black"
+                    android:layout_marginLeft="47dp"
                     android:layout_marginTop="8dp"
-                    android:layout_marginLeft="30dp"
+                    android:fontFamily="sans-serif-condensed-medium"
                     android:text="run"
                     android:textColor="#063E0B"
                     android:textSize="18dp">
@@ -184,13 +172,28 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-medium"
-                    android:layout_marginLeft="30dp"
+                    android:layout_marginLeft="47dp"
                     android:text="overs"
                     android:textColor="#DA2C89">
 
                 </TextView>
             </LinearLayout>
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#009688"
+            android:fontFamily="sans-serif-black"
+            android:padding="7dp"
+            android:layout_marginLeft="4dp"
+            android:text="Match Result"
+            android:textColor="@color/white"
+            android:textSize="14dp">
+
+        </TextView>
     </LinearLayout>
+
     </com.google.android.material.card.MaterialCardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

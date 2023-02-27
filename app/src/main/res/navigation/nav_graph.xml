@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.minhaz_uddin.crickonometry.fragments.HomeFragment"
-        android:label="fragment_home"
+        android:label="Home"
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_rankingFragment"
@@ -20,12 +20,12 @@
     <fragment
         android:id="@+id/upcomingMatchFragment"
         android:name="com.minhaz_uddin.crickonometry.fragments.UpcomingMatchFragment"
-        android:label="fragment_upcoming_match"
+        android:label="Upcoming Matches"
         tools:layout="@layout/fragment_upcoming_match" />
     <fragment
         android:id="@+id/recent_MatchFragment"
         android:name="com.minhaz_uddin.crickonometry.fragments.Recent_MatchFragment"
-        android:label="fragment_recent__match"
+        android:label="Recent Matches"
         tools:layout="@layout/fragment_recent__match" />
     <fragment
         android:id="@+id/homeScreenFragment"
@@ -35,7 +35,7 @@
     <fragment
         android:id="@+id/rankingFragment"
         android:name="com.minhaz_uddin.crickonometry.fragments.RankingFragment"
-        android:label="fragment_ranking"
+        android:label="ODI Ranking"
         tools:layout="@layout/fragment_ranking" />
     <fragment
         android:id="@+id/matchFragment"
@@ -76,12 +76,30 @@
             android:name="lineup"
             app:argType="com.minhaz_uddin.crickonometry.model.info.Lineup[]"
             app:nullable="true" />
+        <argument
+            android:name="localTeam_id"
+            app:argType="integer" />
+        <argument
+            android:name="visitorTeam_id"
+            app:argType="integer" />
+        <argument
+            android:name="localTeam_name"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="visitorTeam_name"
+            app:argType="string"
+            app:nullable="true" />
     </fragment>
     <fragment
         android:id="@+id/playersFragment"
         android:name="com.minhaz_uddin.crickonometry.fragments.PlayersFragment"
-        android:label="fragment_players"
-        tools:layout="@layout/fragment_players" />
+        android:label="Players"
+        tools:layout="@layout/fragment_players" >
+        <action
+            android:id="@+id/action_playersFragment_to_popupCard"
+            app:destination="@id/popupCard" />
+    </fragment>
     <fragment
         android:id="@+id/infoFragment"
         android:name="com.minhaz_uddin.crickonometry.fragments.InfoFragment"
@@ -96,11 +114,15 @@
     <fragment
         android:id="@+id/scoreCardFragment"
         android:name="com.minhaz_uddin.crickonometry.fragments.ScoreCardFragment"
-        android:label="fragment_score_card"
+        android:label="Score Card"
         tools:layout="@layout/fragment_score_card" />
     <fragment
         android:id="@+id/squadFragment"
         android:name="com.minhaz_uddin.crickonometry.fragments.SquadFragment"
-        android:label="fragment_squad"
+        android:label="Squad"
         tools:layout="@layout/fragment_squad" />
+    <dialog
+        android:id="@+id/popupCard"
+        android:name="com.minhaz_uddin.crickonometry.fragments.PopupCard"
+        android:label="PopupCard" />
 </navigation>

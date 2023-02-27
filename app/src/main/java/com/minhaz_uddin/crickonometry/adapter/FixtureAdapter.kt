@@ -22,7 +22,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 
-class FixtureAdapter (private val context: Context, private val fixtures:List<FixtureInfoData>, private val viewModel: CrickViewModel)
+class FixtureAdapter (private val context: Context, private val fixtures:List<FixtureInfoData>, private val viewModel: CrickViewModel,private val finished:Boolean)
     :RecyclerView.Adapter<FixtureAdapter.FixtureViewHolder>() {
         class FixtureViewHolder(private val view:View):RecyclerView.ViewHolder(view){
             val localTeam=view.findViewById<ImageView>(R.id.local)
@@ -70,6 +70,7 @@ class FixtureAdapter (private val context: Context, private val fixtures:List<Fi
                         holder.run2.text=null
                         holder.over1.text=null
                         holder.overs2.text=null
+                        holder.result.text="Yet to be determined"
                     }else {
                         if (runteam1 == team1.id) {
                             holder.run1.text =
@@ -90,10 +91,26 @@ class FixtureAdapter (private val context: Context, private val fixtures:List<Fi
 
                     holder.date.text="Date: ${item.starting_at!!.split("T")[0]}"
                     holder.time.text="Time: ${item.starting_at!!.split("T")[1].split(".")[0]}"
-                    holder.itemView.setOnClickListener {
-                        val action=HomeFragmentDirections.actionHomeFragmentToMatchFragment(item.stage?.name.toString(),item.venue?.name.toString(),item.manofmatch?.fullname.toString(),item.tosswon?.name.toString(),item.venue?.city.toString(),item.league?.name,item.league?.image_path,item.batting?.toTypedArray(),item.lineup?.toTypedArray())
-                        Log.d("previnfo", "${item.stage?.name},${item.id}")
-                        findNavController(holder.itemView).navigate(action)
+                    if (finished==true) {
+                        holder.itemView.setOnClickListener {
+                            val action = HomeFragmentDirections.actionHomeFragmentToMatchFragment(
+                                item.stage?.name.toString(),
+                                item.venue?.name.toString(),
+                                item.manofmatch?.fullname.toString(),
+                                item.tosswon?.name.toString(),
+                                item.venue?.city.toString(),
+                                item.league?.name,
+                                item.league?.image_path,
+                                item.batting?.toTypedArray(),
+                                item.lineup?.toTypedArray(),
+                                item.localteam_id,
+                                item.visitorteam_id,
+                                team1.name,
+                                team2.name
+                            )
+                            Log.d("previnfo", "${item.stage?.name},${item.id}")
+                            findNavController(holder.itemView).navigate(action)
+                        }
                     }
 
                 }

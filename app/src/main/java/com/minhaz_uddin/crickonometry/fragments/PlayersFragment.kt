@@ -37,8 +37,9 @@ class PlayersFragment : Fragment() {
         recyclerView = view.findViewById(R.id.recyclerPlayers)
         viewModel = ViewModelProvider(this)[CrickViewModel::class.java]
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
+
         viewModel.readAllPlayers.observe(viewLifecycleOwner){
-            recyclerView.adapter = PlayerListAdapter(requireContext(), it)
+            recyclerView.adapter = PlayerListAdapter(requireContext(), it,childFragmentManager)
         }
         searchbar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
@@ -51,14 +52,14 @@ class PlayersFragment : Fragment() {
                     }
 
                 }
-                recyclerView.adapter = PlayerListAdapter(requireContext(), searchList)
+                recyclerView.adapter = PlayerListAdapter(requireContext(), searchList,childFragmentManager)
                 return false
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
                 if (newText.isNullOrEmpty()) {
                     viewModel.readAllPlayers.observe(viewLifecycleOwner) {
-                        recyclerView.adapter = PlayerListAdapter(requireContext(), it)
+                        recyclerView.adapter = PlayerListAdapter(requireContext(), it,childFragmentManager)
                     }
 
                 }

@@ -19,15 +19,15 @@ private val retrofit=Retrofit.Builder().addConverterFactory(MoshiConverterFactor
 
 
 interface SportsApi {
-    @GET("https://cricket.sportmonks.com/api/v2.0/teams?api_token=KNq74r9kcedTzzf4XUIPppyaOkdvH48FcNEo1oeBGGI9wtMWcAQ470SMTgrH&include=")
+    @GET("${Constants.BASE_URL}teams?api_token=${Constants.API_KEY}&include=")
     suspend fun getAllTeams():Teams
-    @GET("https://cricket.sportmonks.com/api/v2.0/fixtures?filter[starts_between]=2023-1-15,2023-2-22&api_token=KNq74r9kcedTzzf4XUIPppyaOkdvH48FcNEo1oeBGGI9wtMWcAQ470SMTgrH&include=runs,stage,venue,manofseries,manofmatch,tosswon,league,batting,bowling,batting.batsman,lineup")
+    @GET("${Constants.BASE_URL}fixtures?${Constants.recent_filter}&api_token=${Constants.API_KEY}&include=runs,stage,venue,manofseries,manofmatch,tosswon,league,batting,bowling,batting.batsman,lineup")
     suspend fun getAllFixtures(): FixtureInformation
-    @GET ( "https://cricket.sportmonks.com/api/v2.0/fixtures?filter[starts_between]=2023-2-25,2023-3-23&api_token=KNq74r9kcedTzzf4XUIPppyaOkdvH48FcNEo1oeBGGI9wtMWcAQ470SMTgrH&include=stage,venue,manofseries,manofmatch,tosswon,league")
+    @GET ( "${Constants.BASE_URL}fixtures?${Constants.upcoming_filter}&api_token=${Constants.API_KEY}&include=stage,venue,manofseries,manofmatch,tosswon,league")
     suspend fun getAllUpcomings(): FixtureInformation
-    @GET("https://cricket.sportmonks.com/api/v2.0/team-rankings?filter[type]=ODI&api_token=KNq74r9kcedTzzf4XUIPppyaOkdvH48FcNEo1oeBGGI9wtMWcAQ470SMTgrH&include=")
+    @GET("${Constants.BASE_URL}team-rankings?filter[type]=ODI&api_token=${Constants.API_KEY}&include=")
     suspend fun getAllRankings():Ranking
-    @GET("https://cricket.sportmonks.com/api/v2.0/fixtures?filter[starts_between]=2023-01-15,2023-03-15&include=visitorteam,localteam,lineup&api_token=KNq74r9kcedTzzf4XUIPppyaOkdvH48FcNEo1oeBGGI9wtMWcAQ470SMTgrH")
+    @GET("${Constants.BASE_URL}fixtures?filter[starts_between]=2023-01-15,2023-03-15&include=visitorteam,localteam,lineup&api_token=${Constants.API_KEY}")
     suspend fun getFixtureDl():fixtureDetails
 
 }

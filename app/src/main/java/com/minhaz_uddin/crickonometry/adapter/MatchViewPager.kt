@@ -10,14 +10,14 @@ import com.minhaz_uddin.crickonometry.fragments.*
 import com.minhaz_uddin.crickonometry.model.info.Batting
 import com.minhaz_uddin.crickonometry.model.info.Lineup
 
-class MatchViewPager(fragmentManager: FragmentManager, lifecycle: Lifecycle,val stage_name:String,val venue_name:String,val venue_city:String,val mom:String,val league_name:String,val league_image:String,val tosswon:String,val batting_score:List<Batting>,val lineup:List<Lineup>):
+class MatchViewPager(fragmentManager: FragmentManager, lifecycle: Lifecycle,val stage_name:String,val venue_name:String,val venue_city:String,val mom:String,val league_name:String,val league_image:String,val tosswon:String,val batting_score:List<Batting>,val lineup:List<Lineup>,val localTeam_id:Int,val visitorTeam_id:Int,val team1:String,val team2:String):
     FragmentStateAdapter(fragmentManager,lifecycle) {
     override fun getItemCount(): Int {
         return 3
     }
 
     override fun createFragment(position: Int): Fragment {
-        Log.d("matchinfo", "$stage_name,$venue_name,$venue_city")
+        Log.d("matchinfo", "$localTeam_id")
         val bundle = Bundle()
         bundle.putString("stage_name", stage_name)
         bundle.putString("venue_name", venue_name)
@@ -30,8 +30,8 @@ class MatchViewPager(fragmentManager: FragmentManager, lifecycle: Lifecycle,val 
         return when(position){
             0 ->
                 InfoFragment(bundle)
-            1-> SquadFragment(lineup)
-            2 -> ScoreCardFragment(batting_score)
+            1-> SquadFragment(lineup,localTeam_id,visitorTeam_id,team1,team2)
+            2 -> ScoreCardFragment(batting_score,localTeam_id,visitorTeam_id,team1,team2)
             else -> Fragment()
         }
     }

@@ -1,6 +1,8 @@
 package com.minhaz_uddin.crickonometry.model.liveScore
 
-data class Data(
+
+
+data class LiveScoreData(
     val draw_noresult: Any,
     val elected: String,
     val first_umpire_id: Int,
